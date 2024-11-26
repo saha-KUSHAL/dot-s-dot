@@ -1,7 +1,0 @@
-xorg-xhost
-partitonmanager
-pacui
-neovim
-python-pynvim
-nvidia-open-dkms
-nvidia-utils

@@ -1,0 +1,10 @@
+xorg-xhost
+partitionmanager
+pacui
+neovim
+python-pynvim
+nvidia-utils
+bat
+nvidia-settings
+libva-nvidia-driver
+btop

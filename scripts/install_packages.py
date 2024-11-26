@@ -16,9 +16,10 @@ def read_package_file(path):
 
     return packages
 
-def install_packages(packages, manager, root = False):
-    options = ' -S --noconfirm --norebuild '
-
+def install_packages(packages, manager, options, root = False,):
+    if len(packages) == 0:
+        print(f'No {manager} packages found.')
+        exit()
     for package in packages:
         command = manager + options + package
         print(f'Installing {package}')
@@ -27,7 +28,14 @@ def install_packages(packages, manager, root = False):
 
         print(run_command(command, return_output=False))
 
-path = './packages/linux.txt'
+pacman_path = './packages/pacman.txt'
+aur_path = './packages/aur.txt'
 
-packages = read_package_file(path)
-install_packages(packages=packages, manager='yay')
+pacman_packages = read_package_file(pacman_path)
+aur_packages = read_package_file(aur_path)
+
+print('--- Installing Pacman packages ---')
+install_packages(packages=pacman_packages, manager='pacman', root=True, options=' -S --noconfirm --needed ')
+
+print('--- Installing AUR packages ---')
+install_packages(packages=aur_packages, manager='aur', options=' -S --noconfirm --norebuild ')
